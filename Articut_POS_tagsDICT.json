@@ -1,0 +1,89 @@
+ArticutPOSDICT = {
+    #實體類
+    "ENTITY":{
+        "num":<ENTITY_num>,
+        "classifier":<ENTITY_classifier>,
+        "measureement"<ENTITY_measurement>,
+        "person":<ENTITY_person>,
+        "pronoun":<ENTITY_pronoun>,
+        "possessive":<ENTITY_possessive>,
+        "noun":<ENTITY_noun>,
+        "nounHead":<ENTITY_nounHead>,
+        "nouny":<ENTITY_nouny>,
+        "oov":<ENTITY_oov>,
+        "DetPhrase"<ENTITY_DetPhrase>
+    },
+
+    #動詞類
+    "ACTION":{
+        "lightVerb":<ACTION_lightVerb>,
+        "verb":<ACTION_verb>,
+        "eventQuantifier":<ACTION_eventQuantifier>,
+        "quantifiedVerb":<ACTION_quantifiedVerb>,
+        "verbP":<VerbP>
+    }, 
+    "ASPECT":<ASPECT>,
+    "MODAL":<MODAL>,
+    "AUX":<AUX>,
+
+    #時間類
+    "TIME":{
+        "holiday":<TIME_holiday>,
+        "justtime":<TIME_justtime>,
+        "day":<TIME_day>,
+        "week":<TIME_week>,
+        "month":<TIME_month>,
+        "season":<TIME_season>,
+        "year":<TIME_year>,
+        "decade":<TIME_decade>
+    },
+
+    #修飾詞
+    "IDIOM":<IDIOM>,
+    "MODIFIER":<MODIFIER>,
+    "MODIFIER_color":<MODIFIER_color>,
+    "ModifierP":<ModifierP>,
+    "DegreeP":<DegreeP>,
+    "QUANTIFIER":<QUANTIFIER>,
+
+    #功能詞
+    "FUNC":{
+        "conjunction":<FUNC_conjunction>,
+        "degreeHead":<FUNC_degreeHead>,
+        "determiner":<FUNC_determiner>,
+        "inner":<FUNC_inner>,
+        "inter":<FUNC_inter>,
+        "modifierHead":<FUNC_modifierHead>,
+        "negation":<FUNC_negation>
+    },
+    
+    #句型詞
+    "CLAUSE":{
+        "AnotAQ":<CLAUSE_AnotAQ>,
+        "YesNoQ":<CLAUSE_YesNoQ>,
+        "WhoQ":<CLAUSE_WhoQ>,
+        "WhatQ":<CLAUSE_WhatQ>,
+        "WhereQ":<CLAUSE_WhereQ>,
+        "WhenQ":<CLAUSE_WhenQ>,
+        "WhyQ":<CLAUSE_WhyQ>,
+        "HowQ":<CLAUSE_HowQ>,
+        "particle":<CLAUSE_particle>,
+    },
+
+    #NER類
+    "LOCATION":<LOCATION>,
+    "KNOWLEDGE":{
+        "addTW":<KNOWLEDGE_addTW>,
+        "currency":<KNOWLEDGE_currency>,
+        "lawTW":<KNOWLEDGE_lawTW>,
+        "place":<KNOWLEDGE_place>,
+        "routeTW":<KNOWLEDGE_routeTW>,
+        "url":<KNOWLEDGE_url>,
+        "wikiData":<KNOWLEDGE_wikiData>,
+        "chemical":<KNOWLEDGE_chemical>
+    },
+    "UserDefined":<UserDefined>,
+    "RANGE":{
+        "locality":<RANGE_locality>,
+        "period":<RANGE_period>
+}
