@@ -1,0 +1,22 @@
+{
+    "Syllable": The syllable from textgrid,
+    "Segment": Originated from the sequence of the tape(in Alice), 
+    "Sylb_Onset": The start of the syllable,
+    "Sylb_Offset": The end of the syllable,
+    "Sylb_Order": The count of all syllables,
+    "Sylb_LogFreq": The log frequency of the syllable (The info from FFFBcorpus)_Original is the Log Frequency of the word from Alice(calculated from corpus),
+    "Sylb_LogFreq_Prev": The log frequency of the previous syllable(/word),
+    "Sylb_LogFreq_Next": The log frequency of the next syllable(/word),
+    "SndPower": The sound power of the syllable(/word),
+    "Homophone_cnts": The count of homophone(the info from FFFBcorpus),
+    "Length": The duration of the syllable(/word)_from the textgrid,
+    "Position": The sequence of the syllable(/word) in the sentence,
+    "Sentence": The sequence of the sentence in the text,
+    "POS": The POS of the word (but only put in the column when word_onset is one not zero),
+    "IsLexical": Determine by POS (of CKIP or Articut),
+    "Word": The word from textgrid,
+    "Word_Order": The order of the syllable inside the word,
+    "Word_LogFreq": The log frequency of the word,
+    "Word_Onset": The one or zeor value to indicate the onset of the word
+
+}
