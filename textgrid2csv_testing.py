@@ -118,7 +118,12 @@ def WordCleaner(WordLIST):
         newWordLIST.append(word)
     return newWordLIST
 
-
+def characCleaner(STR):
+    '''
+    Remove redundant symbol in a string
+    '''
+    n_word = re.sub(r'[^\w]', '', STR)
+    return n_word
 """
 add ckip2articut self-defined function
 add pos options for ckip or articut or others??
@@ -146,9 +151,9 @@ if __name__ == "__main__":
     #corpus_datapath = Path("/Users/kevinhsu/Downloads/Sound/")
     
     FFFB_refined_corpusLIST = []
-    with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as csvf:
-        fileLIST = csvf.read().split("\n")
-        for row in fileLIST[1:100]:
+    with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as corpus_csvf:
+        fileLIST = corpus_csvf.read().split("\n")
+        for row in fileLIST[1:]:
             rowLIST = row.split(",")
             #print(len(rowLIST), rowLIST)
             # Extract the syllable info & its homophone & its LogFreqeuncy
@@ -158,7 +163,7 @@ if __name__ == "__main__":
             #print(syllableSTR, type(syllableSTR), "; ", homophone_countINT, type(homophone_countINT), "; ", LogFreq_SylbFLOAT, type(LogFreq_SylbFLOAT))
             tmpLIST = [syllableSTR, homophone_countINT, LogFreq_SylbFLOAT]
             FFFB_refined_corpusLIST.append(tmpLIST)
-    pprint(FFFB_refined_corpusLIST)
+    #pprint(FFFB_refined_corpusLIST)
             
     # The predictor items
     SyllableLIST = []       #  = textgrid.csv_syllable
@@ -188,43 +193,60 @@ if __name__ == "__main__":
     skipLIST = ['"SILPAUSE" ', '"\\" ', '"n" ']
     
     # Open the csv file
-    with open (csvname, "r", encoding="utf-8") as csvfile:
-        fileLIST = csvfile.read().split("\n")
-        fileLIST = LISTblankEraser(fileLIST)
+    with open (csvname, "r", encoding="utf-8") as textgrid_csvfile:
+        textgrid_fileLIST = textgrid_csvfile.read().split("\n")
+        textgrid_fileLIST = LISTblankEraser(textgrid_fileLIST)
         #fileLIST.pop(0)
-        print(len(fileLIST)) # length Should be 30 
+        #print(len(textgrid_fileLIST)) # length Should be 30 
         #pprint(fileLIST)
         
         # find the word out of the textgrid file
-        for row in fileLIST:#[1000:110]:
-            #print(row)
-            #print(len(row))
-            rowLIST = row.split("\t")
-            print(rowLIST)
-            print(len(rowLIST))
-            #print(rowLIST[0])
-            if len(rowLIST) > 2:
-                # Syllable
-                if rowLIST[2] == '"Syllable" ':
-                    syllableSTR = rowLIST[3]
-                    onsetFLOAT = round(float(rowLIST[4]), 4)
-                    offsetFLOAT = round(float(rowLIST[5]), 4)
-                    lengthFLOAT = round(float(rowLIST[6]), 4)
-                    
-                    #SegmentLIST.append(1)  # because it is story 1
-                    Sylb_OnsetLIST.append(onsetFLOAT)
-                    Sylb_OffsetLIST.append(offsetFLOAT)
-                    LengthLIST.append(lengthFLOAT)
-                    
-                    
-                    Sylb_LogFreqLIST.append(0)
-                    Sylb_LogFreq_NextLIST.append(0)
-                    Sylb_LogFreq_PrevLIST.append(0)
-                    
+        for textgrid_row in textgrid_fileLIST[2818:2900]:#[1000:110]:  # [2818:4048]
+            textgrid_rowLIST = textgrid_row.split("\t")
+            
+            # Syllable (with the exclusion of )
+            if textgrid_rowLIST[2] == '"Syllable" ' and textgrid_rowLIST[3] not in skipLIST:  
+                syllableSTR = characCleaner(textgrid_rowLIST[3])
+                print(syllableSTR)
                 
+                #if syllableSTR not in skipLIST:
+                sylb_onsetFLOAT = round(float(textgrid_rowLIST[4]), 4)
+                sylb_offsetFLOAT = round(float(textgrid_rowLIST[5]), 4)
+                sylb_lengthFLOAT = round(float(textgrid_rowLIST[6]), 4)
+                
+                SyllableLIST.append(syllableSTR)
+                #SegmentLIST.append(1)  # because it is story 1
+                Sylb_OnsetLIST.append(sylb_onsetFLOAT)
+                Sylb_OffsetLIST.append(sylb_offsetFLOAT)
+                LengthLIST.append(sylb_lengthFLOAT)
+                #Sylb_OrderLIST.append(1)  # not 1, it should be sequence from 1 to the total amount
+                
+                
+                ## Matching the syllable onto the FFFB corpus
+                for corpusLIST in FFFB_refined_corpusLIST:
+                    if re.search(corpusLIST[0], syllableSTR):
+                        print(corpusLIST[1], corpusLIST[2])
+                        HomophoneCountLIST.append(corpusLIST[1])
+                        Sylb_LogFreqLIST.append(corpusLIST[2])
+                    else:
+                        pass
+                
+            else:
+                pass
+            
+        # Checking the results
+        print(len(SyllableLIST), SyllableLIST)
+        print(len(Sylb_OnsetLIST), Sylb_OnsetLIST)
+        print(len(Sylb_OffsetLIST), Sylb_OffsetLIST)
+        print(len(LengthLIST), LengthLIST)
+        print(len(HomophoneCountLIST), HomophoneCountLIST)
+        print(len(Sylb_LogFreqLIST), Sylb_LogFreqLIST)
+        #print(len(IsLexicalLIST), IsLexicalLIST)
+        
+        """
                 # Word 
-                if rowLIST[2] == '"Word" ':
-                    wordSTR = rowLIST[3]
+                if textgrid_rowLIST[2] == '"Word" ':
+                    wordSTR = textgrid_rowLIST[3]
                     # exclude the skip information >> but I decided this step would be the last step
                     if wordSTR not in skipLIST:  # '"SILPAUSE" ' and '"\\" ' and '"n" ':
                         # get the onset/offset/length of the word
@@ -232,8 +254,8 @@ if __name__ == "__main__":
 
                         
                     else:
-                        print(rowLIST[3])
-                        
+                        print(textgrid_rowLIST[3])
+                
                 # POS for Islexical(lexciality)
                 if rowLIST[2] == '"POS" ':
                     #detailed_word_posSTR = rowLIST[3]
@@ -245,40 +267,33 @@ if __name__ == "__main__":
                     #pass
                 else:
                     print(rowLIST[2])
-            else:
-                pass
-        
-        # Checking the results
-        n_WordLIST = WordCleaner(Word_LIST)
-        print(len(n_WordLIST[0]), n_WordLIST[0])
-        print(len(n_WordLIST), n_WordLIST)
-        print(len(Sylb_OnsetLIST), Sylb_OnsetLIST)
-        print(len(Sylb_OffsetLIST), Sylb_OffsetLIST)
-        print(len(LengthLIST), LengthLIST)
-        print(len(IsLexicalLIST), IsLexicalLIST)
-        #print(len(LogFreqLIST), LogFreqLIST)  # we might found this in the corpus of Academia Sinica
-        #print(len(LogFreq_NextLIST), LogFreq_NextLIST)
-        #print(len(LogFreq_PrevLIST), LogFreq_PrevLIST)
-        
-    
-    """
+                """
+
+"""
     # Saving the self_paced_rt result into csv file
-    dataDICT = pd.DataFrame({'Word':Word_LIST,
-                           'Segment':SegmentLIST,
-                           'Onset':OnsetLIST,
-                           'Offset':OffsetLIST,
-                           'Order':OrderLIST,
-                           'LogFreq':LogFreqLIST,
-                           'LogFreq_Prev':LogFreq_PrevLIST,
-                           'LogFreq_Next':LogFreq_NextLIST,
-                           'SndPower':SndPowerLIST,
-                           'Position':PositionLIST,
-                           'Sentence':SentenceLIST,
-                           'IsLexical':IsLexicalLIST
-                           #'NGRAM':NGRAM_LIST,
-                           #'CFG':CFG_LIST,
-                           #'Fractality':Fractality_LIST
-                           })
+    dataDICT = pd.DataFrame({
+        'Syllable':SyllableLIST,
+        #'Segment':SegmentLIST,
+        'Sylb_Onset':Sylb_OnsetLIST,
+        'Sylb_Offset':Sylb_OffsetLIST,
+        #'Sylb_Order':Sylb_OrderLIST,
+        'Sylb_LogFreq':Sylb_LogFreqLIST,
+        #'Sylb_LogFreq_Prev':LogFreq_PrevLIST,
+        #'Sylb_LogFreq_Next':LogFreq_NextLIST,
+        #'SndPower':SndPowerLIST,
+        'Homophone_cnts':HomophoneCountLIST,
+        #'Position':PositionLIST,
+        #'Sentence':SentenceLIST,
+        #'POS': POS_LIST,
+        #'IsLexical':IsLexicalLIST,
+        #'NGRAM':NGRAM_LIST,
+        #'CFG':CFG_LIST,
+        #'Fractality':Fractality_LIST
+        #'Word':Word_LIST,
+        #'Word_order': Word_OrderLIST,
+        #'Word_LogFreq': Word_LogFreqLIST,
+        #'Word_Onset': Word_OnsetLIST
+        })
                            
     #data_path = "/Users/ting-hsin/Docs/Github/ICN_related/"
     file_name = 'story1_predictor_tables.csv' 
