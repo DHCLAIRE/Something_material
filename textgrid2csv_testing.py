@@ -148,7 +148,7 @@ if __name__ == "__main__":
     
     # Open the corpus from folder
     corpus_datapath = Path("/Users/neuroling/Documents/GitHub/Textgrid2TRF_Interface/Materials")
-    #corpus_datapath = Path("/Users/kevinhsu/Downloads/Sound/")
+    #corpus_datapath = Path("/Users/kevinhsu/Documents/GitHub/Textgrid2TRF_Interface/Materials")
     
     FFFB_refined_corpusLIST = []
     with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as corpus_csvf:
