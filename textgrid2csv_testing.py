@@ -210,7 +210,7 @@ if __name__ == "__main__":
             textgrid_rowLIST = textgrid_row.split("\t")
             
             # Syllable (with the exclusion of )
-            if textgrid_rowLIST[2] == '"Syllable" ' and textgrid_rowLIST[3] not in skipLIST:  ## the item index in here needs to be changed for new info inside the FFFBcorpus list  ##
+            if textgrid_rowLIST[2] == '"Syllable" ' and textgrid_rowLIST[3] not in skipLIST:
                 syllableSTR = characCleaner(textgrid_rowLIST[3])
                 print(syllableSTR)
                 
@@ -231,8 +231,8 @@ if __name__ == "__main__":
                 for corpusLIST in FFFB_refined_corpusLIST:
                     if re.search(corpusLIST[0], syllableSTR):
                         print(corpusLIST[1], corpusLIST[2])
-                        HomophoneCountLIST.append(corpusLIST[1])
-                        Sylb_LogFreqLIST.append(corpusLIST[2])
+                        HomophoneCountLIST.append(corpusLIST[3])
+                        Sylb_LogFreqLIST.append(corpusLIST[4])
                     else:
                         pass
                 
