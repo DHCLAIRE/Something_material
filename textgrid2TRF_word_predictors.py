@@ -12,7 +12,8 @@ from trftools.neural import edge_detector
 # Source Github repo: https://github.com/Eelbrain/Alice
 
 if __name__ == "__main__":
-    DATA_ROOT = Path("/Users/neuroling/Downloads")  #Path("~").expanduser() / 'Data' / 'Alice'
+    #DATA_ROOT = Path("/Users/neuroling/Downloads")  #Path("~").expanduser() / 'Data' / 'Alice'
+    DATA_ROOT = Path("/Users/kevinhsu/Downloads")
     STIMULUS_DIR = DATA_ROOT / "SetB_Story_sound"  #"SetA_Story_sound"
     
     print(STIMULUS_DIR)
