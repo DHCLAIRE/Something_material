@@ -12,22 +12,25 @@ from trftools.neural import edge_detector
 # Source Github repo: https://github.com/Eelbrain/Alice
 
 if __name__ == "__main__":
-    DATA_ROOT = Path("/Volumes/Neurolang_1/Master Program/New_Thesis_topic")  #Path("~").expanduser() / 'Data' / 'Alice'
-    STIMULUS_DIR = DATA_ROOT / "Alice(EEG dataset_mat_and stimuli)/audio"
+    DATA_ROOT = Path("/Users/neuroling/Downloads")  #Path("~").expanduser() / 'Data' / 'Alice'
+    STIMULUS_DIR = DATA_ROOT / "SetB_Story_sound"  #"SetA_Story_sound"
     
-    #print(STIMULUS_DIR)
-    """
+    print(STIMULUS_DIR)
+    #"""
     ## THE FIRST STEP ## #from Alice/predictors/make_gammatone.py
     # Make Gammatone from audio file
-    for i in range(1, 13):
-        audio_gammatone = STIMULUS_DIR / f'{i}-gammatone.pickle'
+    
+    story_nameLIST = ["Magician", "Giant", "Rabbit", "Mouse", "Braveness", "Witch_s_Broom"]
+    
+    for i in range(1, 7):
+        audio_gammatone = STIMULUS_DIR / f'Set_B_HCD_{i}_{story_nameLIST[i-1]}_pu2_zu2_bo4_luo2-gammatone.pickle'   # Set_B_HCD_1_Magician_pu2_zu2_bo4_luo2
         if audio_gammatone.exists():
             continue
-        wav = load.wav(STIMULUS_DIR / f'DownTheRabbitHoleFinal_SoundFile{i}.wav')
-        gt = gammatone_bank(wav, 20, 5000, 256, location='left', pad=False, tstep=0.001)
-        save.pickle(gt, audio_gammatone)
+        wav = eelbrain.load.wav(STIMULUS_DIR / f'Set_B_HCD_{i}_{story_nameLIST[i-1]}_pu2_zu2_bo4_luo2.wav')  #Set_B_HCD_1_Magician_pu2_zu2_bo4_luo2  >> Magician: this part is different in each tape, so...
+        gt =  eelbrain.gammatone_bank(wav, 20, 5000, 256, location='left', pad=False, tstep=0.001)
+        eelbrain.save.pickle(gt, audio_gammatone)
     
-    
+    """
     ## THE SECOND STEP ##  # from Alice/predictors/make_gammatone_predictors.py
     # Make predictors from gammatone
     
