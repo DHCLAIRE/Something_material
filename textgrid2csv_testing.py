@@ -26,8 +26,11 @@ from pathlib import Path
 #import re
 #from nltk import sent_tokenize
 #from nltk import tokenize
+from pyzhuyin import pinyin_to_zhuyin  #, zhuyin_to_pinyin
+
 #-------------------------------------------------
 # Text file input / output
+
 
 def inputtextlines(filename):
     handle = open(filename,'r')
@@ -156,12 +159,14 @@ if __name__ == "__main__":
         for row in fileLIST[1:]:
             rowLIST = row.split(",")
             #print(len(rowLIST), rowLIST)
-            # Extract the syllable info & its homophone & its LogFreqeuncy
+            # Extract the syllable info & its homophone & its LogFreqeuncy & Zhuyin & tone
             syllableSTR = rowLIST[2]
             homophone_countINT = int(rowLIST[9])
             LogFreq_SylbFLOAT = float(rowLIST[17])
+            zhuyinSTR = rowLIST[3]
+            toneSTR = str(rowLIST[4])
             #print(syllableSTR, type(syllableSTR), "; ", homophone_countINT, type(homophone_countINT), "; ", LogFreq_SylbFLOAT, type(LogFreq_SylbFLOAT))
-            tmpLIST = [syllableSTR, homophone_countINT, LogFreq_SylbFLOAT]
+            tmpLIST = [syllableSTR, zhuyinSTR, toneSTR, homophone_countINT, LogFreq_SylbFLOAT]
             FFFB_refined_corpusLIST.append(tmpLIST)
     #pprint(FFFB_refined_corpusLIST)
             
@@ -205,7 +210,7 @@ if __name__ == "__main__":
             textgrid_rowLIST = textgrid_row.split("\t")
             
             # Syllable (with the exclusion of )
-            if textgrid_rowLIST[2] == '"Syllable" ' and textgrid_rowLIST[3] not in skipLIST:  
+            if textgrid_rowLIST[2] == '"Syllable" ' and textgrid_rowLIST[3] not in skipLIST:  ## the item index in here needs to be changed for new info inside the FFFBcorpus list  ##
                 syllableSTR = characCleaner(textgrid_rowLIST[3])
                 print(syllableSTR)
                 
