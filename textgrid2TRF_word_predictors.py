@@ -21,14 +21,18 @@ if __name__ == "__main__":
     ## THE FIRST STEP ## #from Alice/predictors/make_gammatone.py
     # Make Gammatone from audio file
     
-    story_nameLIST = ["Magician", "Giant", "Rabbit", "Mouse", "Braveness", "Witch_s_Broom"]
+    #SetA_HCD_story_nameLIST = ["Witch_s_Broom", "Animal_Hospital", "Meatball_Soup", "No_Tomatoes", "Mouse_Kiki", "Rabbit_With_Short_Ears"]
+    #SetA_LCD_story_nameLIST = ["Braveness"]  #Set_A_LCD_1_Braveness_pu2_zu2_bo4_luo2.wav
+    #SetB_HCD_story_nameLIST = ["Magician", "Giant", "Rabbit_With_Short_Ears", "Mouse_Kiki", "Braveness", "Witch_s_Broom"]
+    SetB_LCD_story_nameLIST = ["Animal_Hospital"]  #Set_B_LCD_1_Animal_Hospital_sheng1_chu4_ji3_an4_mono.wav
     
     for i in range(1, 7):
-        audio_gammatone = STIMULUS_DIR / f'Set_B_HCD_{i}_{story_nameLIST[i-1]}_pu2_zu2_bo4_luo2-gammatone.pickle'   # Set_B_HCD_1_Magician_pu2_zu2_bo4_luo2
+        audio_gammatone = STIMULUS_DIR / "Set_B_gammatone" / f'Set_B_LCD_{i}_{SetB_LCD_story_nameLIST[0]}_sheng1_chu4_ji3_an4-gammatone.pickle'   # Set_B_HCD_1_Magician_pu2_zu2_bo4_luo2
         if audio_gammatone.exists():
             continue
-        wav = eelbrain.load.wav(STIMULUS_DIR / f'Set_B_HCD_{i}_{story_nameLIST[i-1]}_pu2_zu2_bo4_luo2.wav')  #Set_B_HCD_1_Magician_pu2_zu2_bo4_luo2  >> Magician: this part is different in each tape, so...
-        gt =  eelbrain.gammatone_bank(wav, 20, 5000, 256, location='left', pad=False, tstep=0.001)
+        wav = eelbrain.load.wav(STIMULUS_DIR / f'Set_B_LCD_{i}_{SetB_LCD_story_nameLIST[0]}_sheng1_chu4_ji3_an4_mono.wav')  #Set_B_HCD_1_Magician_pu2_zu2_bo4_luo2  >> Magician: this part is different in each tape, so...
+        gt =  eelbrain.gammatone_bank(wav, 20, 5000, 256, location='left', tstep=0.001) #, pad=False 
+        #n_gt =  eelbrain.gammatone_bank(wav, 80, 15000, 128, location='left', tstep=0.001)
         eelbrain.save.pickle(gt, audio_gammatone)
     
     """
@@ -61,12 +65,14 @@ if __name__ == "__main__":
         x = gt_on.bin(nbins=8, func=np.sum, dim='frequency')
         save.pickle(x, PREDICTOR_DIR / f'{i}~gammatone-on-8.pickle')
     
+    
     """
     ## THE THIRD STEP ##  # from Alice/predictors/make_word_predictors.py
     """
     Generate predictors for word-level variables
     
     See the `explore_word_predictors.py` notebook for more background
+    """
     """
     #from pathlib import Path
     #import eelbrain
@@ -93,3 +99,4 @@ if __name__ == "__main__":
         # save
         eelbrain.save.pickle(ds, STIMULUS_DIR / f'{segment}~Ngram-CFG_word.pickle')
    # /Volumes/Neurolang_1/Master Program/New_Thesis_topic/Alice(EEG dataset_mat_and stimuli)
+   """
