@@ -15,8 +15,8 @@
     "POS": The POS of the word (but only put in the column when word_onset is one not zero),
     "IsLexical": Determine by POS (of CKIP or Articut),
     "Word": The word from textgrid,
-    "Word_Order": The order of the syllable inside the word,
+    "Sylb_InWord_Order": The order of the syllable inside the word,
     "Word_LogFreq": The log frequency of the word,
-    "Word_Onset": The one or zeor value to indicate the onset of the word
+    "Word_Onset": The one or zero value to indicate the onset of the word
 
 }
