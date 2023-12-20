@@ -134,8 +134,8 @@ add pos options for ckip or articut or others??
 
 if __name__ == "__main__":
     
-    textgrid_path = "/Users/neuroling/Downloads/Sound/"
-    #textgrid_path = "/Users/kevinhsu/Downloads/Sound/"
+    #textgrid_path = "/Users/neuroling/Downloads/Sound/"
+    textgrid_path = "/Users/kevinhsu/Downloads/Sound/"
     
     textgridname = textgrid_path + "story1.TextGrid"
     csvname = textgridname + '.csv'
@@ -150,8 +150,8 @@ if __name__ == "__main__":
     
     
     # Open the corpus from folder
-    corpus_datapath = Path("/Users/neuroling/Documents/GitHub/Textgrid2TRF_Interface/Materials")
-    #corpus_datapath = Path("/Users/kevinhsu/Documents/GitHub/Textgrid2TRF_Interface/Materials")
+    #corpus_datapath = Path("/Users/neuroling/Documents/GitHub/Textgrid2TRF_Interface/Materials")
+    corpus_datapath = Path("/Users/kevinhsu/Documents/GitHub/Textgrid2TRF_Interface/Materials")
     
     FFFB_refined_corpusLIST = []
     with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as corpus_csvf:
