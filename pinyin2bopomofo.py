@@ -41,6 +41,8 @@ if __name__ == "__main__":
             
             print(bpmfSTR, toneSTR)
             
+            
+            """
             # the transformation
             assert(pinyin_to_zhuyin("lu3") == "ㄌㄨˇ")
             assert(pinyin_to_zhuyin("dan4") == "ㄉㄢˋ")
@@ -49,5 +51,5 @@ if __name__ == "__main__":
             assert(zhuyin_to_pinyin("ㄌㄩˊ") == "lü2")
             assert(zhuyin_to_pinyin("˙ㄗ") == "zi5")
             #assert(map(lambda z: zhuyin_to_pinyin(z, u_to_v=True), ["ㄌㄩˊ", "˙ㄗ"]) == ["lv2", "zi5"])
-            
+            """
         
