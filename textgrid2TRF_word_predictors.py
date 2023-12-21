@@ -20,8 +20,8 @@ if __name__ == "__main__":
     
     #SetA_HCD_story_nameLIST = ["Witch_s_Broom", "Animal_Hospital", "Meatball_Soup", "No_Tomatoes", "Mouse_Kiki", "Rabbit_With_Short_Ears"]  #Set_A_HCD_6_Rabbit_With_Short_Ears_sheng1_chu4_ji3_an4.wav
     #SetA_LCD_story_nameLIST = ["Braveness"]  #Set_A_LCD_1_Braveness_pu2_zu2_bo4_luo2.wav
-    #SetB_HCD_story_nameLIST = ["Magician", "Giant", "Rabbit_With_Short_Ears", "Mouse_Kiki", "Braveness", "Witch_s_Broom"]
-    SetB_LCD_story_nameLIST = ["Animal_Hospital"]  #Set_B_LCD_1_Animal_Hospital_sheng1_chu4_ji3_an4_mono.wav
+    SetB_HCD_story_nameLIST = ["Magician", "Giant", "Rabbit_With_Short_Ears", "Mouse_Kiki", "Braveness", "Witch_s_Broom"]
+    #SetB_LCD_story_nameLIST = ["Animal_Hospital"]  #Set_B_LCD_1_Animal_Hospital_sheng1_chu4_ji3_an4_mono.wav
     
     """
     ## THE FIRST STEP ## #from Alice/predictors/make_gammatone.py
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     
     #PREDICTOR_DIR.mkdir(exist_ok=True)
     for i in range(1, 7):
-        gt = eelbrain.load.unpickle(STIMULUS_DIR / "Set_B_gammatone" / f'Set_B_LCD_{i}_{SetB_LCD_story_nameLIST[0]}_sheng1_chu4_ji3_an4-gammatone.pickle')
+        gt = eelbrain.load.unpickle(STIMULUS_DIR / "Set_B_gammatone" / f'Set_B_HCD_{i}_{SetB_HCD_story_nameLIST[i-1]}_pu2_zu2_bo4_luo2-gammatone.pickle')
         
         """
         ### For old version ###
@@ -75,13 +75,13 @@ if __name__ == "__main__":
         gt_on = eelbrain.edge_detector(gt_log, c=30)
     
         # Create and save 1 band versions of the two predictors (i.e., temporal envelope predictors)
-        eelbrain.save.pickle(gt_log.sum('frequency'), PREDICTOR_DIR / f'Set_B_LCD_{i}~gammatone-1.pickle')
-        eelbrain.save.pickle(gt_on.sum('frequency'), PREDICTOR_DIR / f'Set_B_LCD_{i}~gammatone-on-1.pickle')
+        eelbrain.save.pickle(gt_log.sum('frequency'), PREDICTOR_DIR / f'Set_B_HCD_{i}~gammatone-1.pickle')
+        eelbrain.save.pickle(gt_on.sum('frequency'), PREDICTOR_DIR / f'Set_B_HCD_{i}~gammatone-on-1.pickle')
         # Create and save 8 band versions of the two predictors (binning the frequency axis into 8 bands)
         x = gt_log.bin(nbins=8, func='sum', dim='frequency')
-        eelbrain.save.pickle(x, PREDICTOR_DIR / f'Set_B_LCD_{i}~gammatone-8.pickle')
+        eelbrain.save.pickle(x, PREDICTOR_DIR / f'Set_B_HCD_{i}~gammatone-8.pickle')
         x = gt_on.bin(nbins=8, func='sum', dim='frequency')
-        eelbrain.save.pickle(x, PREDICTOR_DIR / f'Set_B_LCD_{i}~gammatone-on-8.pickle')
+        eelbrain.save.pickle(x, PREDICTOR_DIR / f'Set_B_HCD_{i}~gammatone-on-8.pickle')
 
     
     
