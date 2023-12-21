@@ -28,21 +28,15 @@ if __name__ == "__main__":
     ASBC_corpusLIST = []
     with open(corpus_datapath / 'word_freq.txt', 'r', encoding = "utf-8") as ASBCcorpus_txt:
         ASBC_dataSTR = ASBCcorpus_txt.read()
+        #print(type(ASBC_dataSTR)) ##STR
+        #pprint(ASBC_dataSTR[:10])  ## '一\t113236\n一'
         
+        All_txt_LIST = []
         for rowSTR in ASBC_dataSTR:
-            rowLIST = rowSTR.split(" ")
-            print(type(rowLIST))
-            print(rowLIST)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            tmpRowLIST = rowSTR.split("\n")
+            All_txt_LIST.append(tmpRowLIST)
+            #print(type(tmpRowLIST))
+            #print(tmpRowLIST)
+            
+        pprint(All_txt_LIST[:10])
         
