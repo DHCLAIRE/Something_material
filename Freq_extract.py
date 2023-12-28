@@ -33,7 +33,8 @@ if __name__ == "__main__":
         
         All_txt_LIST = []
         for rowSTR in ASBC_dataSTR:
-            tmpRowLIST = rowSTR.split("\n")
+            #rowSTR.replace("\n", ", ")
+            #tmpRowLIST = rowSTR.split(", ")
             All_txt_LIST.append(tmpRowLIST)
             #print(type(tmpRowLIST))
             #print(tmpRowLIST)
