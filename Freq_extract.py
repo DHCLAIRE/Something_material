@@ -37,17 +37,41 @@ if __name__ == "__main__":
         
         # Select the freq by its own character
         All_txt_LIST = []
-        for rowSTR in ASBC_dataSTR[:100]:
-            print(rowSTR)
+        for rowSTR in ASBC_dataSTR:
+            #print(rowSTR)
             # exclude the \n at the end of the strings, and split the data by \t
             rowSTR = rowSTR.replace("\n", "")
             tmpRowLIST = rowSTR.split("\t")
-            print(tmpRowLIST)
+            #print(tmpRowLIST)
             # Append the cleased textLIST into bigger LIST
             All_txt_LIST.append(tmpRowLIST)
             #print(type(tmpRowLIST))
             #print(tmpRowLIST)
             
-        pprint(All_txt_LIST[:10])
+        #pprint(All_txt_LIST[:10])
+    
+    
+    FFFB_dataLIST = []
+    # Load in the FFFB corpus to add the freq at the end of the csv
+    with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as FFFBcorpus_csv:
+        FFFBcorpus_csv_dataSTR = FFFBcorpus_csv.read().split("\n")
         
+        for char_rowSTR in FFFBcorpus_csv_dataSTR[:20]:
+            #print(char_rowSTR)
+            #print(len(char_rowSTR))
+            tmpCharLIST = char_rowSTR.split(",")
+            #pprint(tmpCharLIST)
+            #print(tmpCharLIST[2])  # the char in the corpus
+            for n_rowLIST in All_txt_LIST:
+                if tmpCharLIST[2] == n_rowLIST[0]:
+                    print("Match", tmpCharLIST[2])
+                else:
+                    pass
+                    #print("Error: 404 not found")
+            #FFFB_dataLIST.append(tmpLIST)
+            
         
+        #pprint(FFFB_dataLIST)
+        #print(len(FFFB_dataLIST))
+        #print(FFFB_dataLIST[:][3])
+        ##pprint(FFFBcorpus_csv_dataSTR[:10])
