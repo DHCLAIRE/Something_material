@@ -28,24 +28,26 @@ if __name__ == "__main__":
     
     ASBC_corpusLIST = []
     with open(corpus_datapath / 'word_freq.txt', 'r', encoding = "utf-8") as ASBCcorpus_txt:
-        ASBC_dataSTR = ASBCcorpus_txt.read()
-        # segment the 
-        ASBC_corpusLIST = ASBC_dataSTR.split("\n") 
+        ASBC_dataSTR = ASBCcorpus_txt.readlines()
+        # segment the data by \n 
+        #ASBC_corpusLIST = ASBC_dataSTR.split("\n") 
         #print(type(ASBC_dataSTR)) ##STR
-        #pprint(ASBC_dataSTR[:12])  ## '一\t113236\n一'
+        pprint(ASBC_dataSTR[:12])  ## '一\t113236\n一'
         #pprint(ASBC_corpusLIST[:10])
         
+        # Select the freq by its own character
         All_txt_LIST = []
-        for rowSTR in ASBC_corpusLIST[:100]:
-            
+        for rowSTR in ASBC_dataSTR[:100]:
             print(rowSTR)
-            """
-            tmpRowLIST = rowSTR.split("]\n")
+            # exclude the \n at the end of the strings, and split the data by \t
+            rowSTR = rowSTR.replace("\n", "")
+            tmpRowLIST = rowSTR.split("\t")
             print(tmpRowLIST)
+            # Append the cleased textLIST into bigger LIST
             All_txt_LIST.append(tmpRowLIST)
             #print(type(tmpRowLIST))
             #print(tmpRowLIST)
             
         pprint(All_txt_LIST[:10])
-        """
+        
         
