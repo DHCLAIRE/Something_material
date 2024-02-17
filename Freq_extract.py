@@ -56,15 +56,19 @@ if __name__ == "__main__":
     with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as FFFBcorpus_csv:
         FFFBcorpus_csv_dataSTR = FFFBcorpus_csv.read().split("\n")
         
-        for char_rowSTR in FFFBcorpus_csv_dataSTR[:20]:
-            #print(char_rowSTR)
-            #print(len(char_rowSTR))
+        #FFFBcorpus_csv_dataSTR[0] = FFFBcorpus_csv_dataSTR[0].append("freq_char_ASBC")
+        #print(FFFBcorpus_csv_dataSTR[0])
+        
+        for char_rowSTR in FFFBcorpus_csv_dataSTR[1:20]:
             tmpCharLIST = char_rowSTR.split(",")
             #pprint(tmpCharLIST)
             #print(tmpCharLIST[2])  # the char in the corpus
             for n_rowLIST in All_txt_LIST:
                 if tmpCharLIST[2] == n_rowLIST[0]:
                     print("Match", tmpCharLIST[2])
+                    print(n_rowLIST[1]) # the freq of the char
+                    tmpCharLIST.append(n_rowLIST[1])
+                    print(tmpCharLIST)
                 else:
                     pass
                     #print("Error: 404 not found")
