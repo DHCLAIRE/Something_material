@@ -23,21 +23,29 @@ if __name__ == "__main__":
     
     # Open the corpus from folder
     #corpus_datapath = Path("/Users/neuroling/Documents/GitHub/Textgrid2TRF_Interface/Materials")
-    corpus_datapath = Path("/Users/kevinhsu/Documents/GitHub/Textgrid2TRF_Interface/Materials")
+    #corpus_datapath = Path("/Users/kevinhsu/Documents/GitHub/Textgrid2TRF_Interface/Materials")
+    corpus_datapath = Path("/Users/ting-hsin/Docs/Github/Textgrid2TRF_Interface/Materials")
     
     ASBC_corpusLIST = []
     with open(corpus_datapath / 'word_freq.txt', 'r', encoding = "utf-8") as ASBCcorpus_txt:
         ASBC_dataSTR = ASBCcorpus_txt.read()
+        # segment the 
+        ASBC_corpusLIST = ASBC_dataSTR.split("\n") 
         #print(type(ASBC_dataSTR)) ##STR
-        #pprint(ASBC_dataSTR[:10])  ## '一\t113236\n一'
+        #pprint(ASBC_dataSTR[:12])  ## '一\t113236\n一'
+        #pprint(ASBC_corpusLIST[:10])
         
         All_txt_LIST = []
-        for rowSTR in ASBC_dataSTR:
-            #rowSTR.replace("\n", ", ")
-            #tmpRowLIST = rowSTR.split(", ")
+        for rowSTR in ASBC_corpusLIST[:100]:
+            
+            print(rowSTR)
+            """
+            tmpRowLIST = rowSTR.split("]\n")
+            print(tmpRowLIST)
             All_txt_LIST.append(tmpRowLIST)
             #print(type(tmpRowLIST))
             #print(tmpRowLIST)
             
         pprint(All_txt_LIST[:10])
+        """
         
