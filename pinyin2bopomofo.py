@@ -69,12 +69,13 @@ if __name__ == "__main__":
             if toneSTR == str(5):
                 # Switch the Five tones in Mandarin from 12345 into the actual punctuations
                 n_toneSTR = num2tone(toneSTR)
-                spelling_2_STR = n_toneSTR + bpmfSTR  # tone changed one  e.g.ㄅㄚˋ  # zhuyin_to_pinyin accept the fifth tone in tone first charater second
+                spelling_2_STR = n_toneSTR + bpmfSTR    # zhuyin_to_pinyin accept the fifth tone in tone first and bpmf second
             else:
                 n_toneSTR = num2tone(toneSTR)
-                spelling_2_STR = bpmfSTR + n_toneSTR
+                spelling_2_STR = bpmfSTR + n_toneSTR    # tone changed one  e.g.ㄅㄚˋ
             
-            testTransferSTR = zhuyin_to_pinyin(spelling_2_STR)
+            ## Switch the zhuyin to pinyin by pyzhuyin tool
+            ToneTransferedSTR = zhuyin_to_pinyin(spelling_2_STR)
             
             
             
@@ -85,6 +86,7 @@ if __name__ == "__main__":
             print(testTransferSTR)
             
             """
+            # example
             # the transformation
             assert(pinyin_to_zhuyin("lu3") == "ㄌㄨˇ")
             assert(pinyin_to_zhuyin("dan4") == "ㄉㄢˋ")
