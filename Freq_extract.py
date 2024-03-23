@@ -48,9 +48,11 @@ if __name__ == "__main__":
             #print(type(tmpRowLIST))
             #print(tmpRowLIST)
             
-        #pprint(All_txt_LIST[:10])
+        pprint(All_txt_LIST[:10])
     
     
+    """
+    ### YOU GOT THE WRONG FILE, THE ONE YOU SHOULD BE USING IS THE CHINESE SCRIPT FROM THE AUDIO USED IN THE EXPERIMENT###
     FFFB_dataLIST = []
     # Load in the FFFB corpus to add the freq at the end of the csv
     with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as FFFBcorpus_csv:
@@ -73,7 +75,7 @@ if __name__ == "__main__":
                     pass
                     #print("Error: 404 not found")
             #FFFB_dataLIST.append(tmpLIST)
-            
+            """
         
         #pprint(FFFB_dataLIST)
         #print(len(FFFB_dataLIST))
