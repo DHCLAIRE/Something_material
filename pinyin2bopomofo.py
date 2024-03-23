@@ -20,7 +20,7 @@ from pathlib import Path
 from pyzhuyin import pinyin_to_zhuyin, zhuyin_to_pinyin
 
 
-def toneTape(inputToneSTR):
+def num2tone(inputToneSTR):
     '''
     Switch the Five tones in Mandarin from 12345 into the actual punctuations
     '''
@@ -50,29 +50,28 @@ if __name__ == "__main__":
     corpus_datapath = Path("/Users/ting-hsin/Docs/Github/Textgrid2TRF_Interface/Materials")
     
     FFFB_refined_corpusLIST = []
+    ## Open the curpus files from the folder
     with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as corpus_csvf:
         fileLIST = corpus_csvf.read().split("\n")
         
+        ## See the content row by row
         for row in fileLIST[1:30]:
             rowLIST = row.split(",")
             print(len(rowLIST), rowLIST)
             
-            
+            ## Select the bpmf & its tone number
             bpmfSTR = str(rowLIST[3])
             toneSTR = str(rowLIST[4])
             print(len(toneSTR), type(toneSTR))
             
-            ## Switch the Five tones in Mandarin from 12345 into the actual punctuations
-            
-            
-            
             ## Combine the bpmf with the tone (especially following the zhuyin_to_pinyin() arrangement)
             # spelling_1_STR = bpmfSTR + toneSTR     # original one  e.g.ㄅㄚ4
             if toneSTR == str(5):
-                n_toneSTR = toneTape(toneSTR)
+                # Switch the Five tones in Mandarin from 12345 into the actual punctuations
+                n_toneSTR = num2tone(toneSTR)
                 spelling_2_STR = n_toneSTR + bpmfSTR  # tone changed one  e.g.ㄅㄚˋ  # zhuyin_to_pinyin accept the fifth tone in tone first charater second
             else:
-                n_toneSTR = toneTape(toneSTR)
+                n_toneSTR = num2tone(toneSTR)
                 spelling_2_STR = bpmfSTR + n_toneSTR
             
             testTransferSTR = zhuyin_to_pinyin(spelling_2_STR)
