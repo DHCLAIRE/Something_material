@@ -37,8 +37,16 @@ def num2tone(inputToneSTR):
         inputToneSTR = "˙"
         
     return inputToneSTR
-        
 
+
+'''
+## NOTES for version of spellings ##
+
+spelling_1_STR: e.g.ㄅㄚ4   # original one from the corpus
+spelling_2_STR: e.g.ㄅㄚˋ   # tone changed-mark one  
+spelling_3_STR: e.g.ba4    # pinyin version 
+
+'''
 
 
 
@@ -50,6 +58,7 @@ if __name__ == "__main__":
     corpus_datapath = Path("/Users/ting-hsin/Docs/Github/Textgrid2TRF_Interface/Materials")
     
     FFFB_refined_corpusLIST = []
+    pinyinLIST = []
     ## Open the curpus files from the folder
     with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as corpus_csvf:
         fileLIST = corpus_csvf.read().split("\n")
@@ -72,11 +81,11 @@ if __name__ == "__main__":
                 spelling_2_STR = n_toneSTR + bpmfSTR    # zhuyin_to_pinyin accept the fifth tone in tone first and bpmf second
             else:
                 n_toneSTR = num2tone(toneSTR)
-                spelling_2_STR = bpmfSTR + n_toneSTR    # tone changed one  e.g.ㄅㄚˋ
+                spelling_2_STR = bpmfSTR + n_toneSTR    # tone mark changed one  e.g.ㄅㄚˋ
             
             ## Switch the zhuyin to pinyin by pyzhuyin tool
-            ToneTransferedSTR = zhuyin_to_pinyin(spelling_2_STR)
-            
+            spelling_3_STR = zhuyin_to_pinyin(spelling_2_STR)   # pinyin version e.g. ba4
+            pinyinLIST.append(ToneTransferedSTR)  # Or should I just add the ToneTransferedSTR at the end of the csv column??
             
             
             print(bpmfSTR, n_toneSTR)
