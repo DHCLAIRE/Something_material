@@ -9,5 +9,5 @@ To create TRF predictor form from Textgrid
 
 
 ## Useful python tools for conversion between zhuyin & pinyin
-1. [pypinyin](https://www.readfog.com/a/1679197351046123520)https://www.readfog.com/a/1679197351046123520
+1. [pypinyin](https://www.readfog.com/a/1679197351046123520)
 2. [pyzhuyin](https://pypi.org/project/pyzhuyin/)
