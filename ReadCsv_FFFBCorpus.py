@@ -21,8 +21,9 @@ from pathlib import Path
 if __name__ == "__main__":
     
     # Open the csv file
-    corpus_datapath = Path("/Users/neuroling/Documents/GitHub/Textgrid2TRF_Interface/Materials")
+    #corpus_datapath = Path("/Users/neuroling/Documents/GitHub/Textgrid2TRF_Interface/Materials")
     #corpus_datapath = Path("/Users/kevinhsu/Downloads/Sound/")
+    corpus_datapath = Path("/Users/ting-hsin/Docs/Github/Textgrid2TRF_Interface/Materials")
     with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as csvf:
         fileLIST = csvf.read().split("\n")
         
@@ -47,7 +48,11 @@ if __name__ == "__main__":
             FFFB_refined_corpusLIST.append(tmpLIST)
     pprint(FFFB_refined_corpusLIST)
     
+    ## The next part is to get syllable/homophone/LogFreq info of the LTTC script's target words from the FFFB corpus
     
+    
+    """
+    ## This is just for checking and for user to search for the target word later ##
     testingSTR = input("word: ")
     
     for corpusLIST in FFFB_refined_corpusLIST:
@@ -55,6 +60,7 @@ if __name__ == "__main__":
             print(corpusLIST[1], corpusLIST[2])
         else:
             pass
+    """
             
             
             

@@ -51,8 +51,9 @@ if __name__ == "__main__":
         pprint(All_txt_LIST[:10])
     
     
-    """
+    
     ### YOU GOT THE WRONG FILE, THE ONE YOU SHOULD BE USING IS THE CHINESE SCRIPT FROM THE AUDIO USED IN THE EXPERIMENT###
+    ### MODIFY THE INPUT FILE !!! ###
     FFFB_dataLIST = []
     # Load in the FFFB corpus to add the freq at the end of the csv
     with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as FFFBcorpus_csv:
