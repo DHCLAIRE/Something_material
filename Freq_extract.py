@@ -72,15 +72,21 @@ if __name__ == "__main__":
             print(segmentLIST[3])  # the char in the file
             
             for n_rowLIST in All_txt_LIST:
-                if segmentLIST[3] == n_rowLIST[0]:
+                #print(n_rowLIST[0])
+                #print(type(n_rowLIST[0]))
+                
+                if re.search(n_rowLIST[0], segmentLIST[3]):  # NEED TO USE THE PERFECT SEARCH
+                #if segmentLIST[3] == n_rowLIST[0]:
+                    
                     print("Match", segmentLIST[3])
-                    print(n_rowLIST[1]) # the freq of the char
+                    print(n_rowLIST[1]) # the freq of the word
                     segmentLIST.append(n_rowLIST[1])
                     print(segmentLIST)
                 else:
                     pass
-                    #print("Error: 404 not found")  # DIDN'T FIND ANYTHING ?!!!
+                    #print("Error: 404 not found")   ##  DIDN'T FIND ANYTHING ?!!!
             #FFFB_dataLIST.append(tmpLIST)
+            #"""
         
         
         #pprint(FFFB_dataLIST)
