@@ -25,6 +25,7 @@ if __name__ == "__main__":
     #corpus_datapath = Path("/Users/neuroling/Documents/GitHub/Textgrid2TRF_Interface/Materials")
     #corpus_datapath = Path("/Users/kevinhsu/Documents/GitHub/Textgrid2TRF_Interface/Materials")
     corpus_datapath = Path("/Users/ting-hsin/Docs/Github/Textgrid2TRF_Interface/Materials")
+    file_datapath = Path("/Users/ting-hsin/Downloads/LTTC_TZUCHI/LTTC_TZUCHI-1/SET A/SetA_updated_TextGrid_w_VOT+POS")
     
     ASBC_corpusLIST = []
     with open(corpus_datapath / 'word_freq.txt', 'r', encoding = "utf-8") as ASBCcorpus_txt:
@@ -54,29 +55,33 @@ if __name__ == "__main__":
     
     ### YOU GOT THE WRONG FILE, THE ONE YOU SHOULD BE USING IS THE CHINESE SCRIPT FROM THE AUDIO USED IN THE EXPERIMENT###
     ### MODIFY THE INPUT FILE !!! ###
-    FFFB_dataLIST = []
+    csv_dataLIST = []
     # Load in the FFFB corpus to add the freq at the end of the csv
-    with open(corpus_datapath / 'corpus_FF_FB_20161206.csv', 'r', encoding = "utf-8") as FFFBcorpus_csv:
-        FFFBcorpus_csv_dataSTR = FFFBcorpus_csv.read().split("\n")
+    with open(file_datapath / 'n_Set_A_HCD_1_Witch_s_Broom_sheng1_chu4_ji3_an4.TextGrid.csv', 'r', encoding = "utf-8") as LTTC_csvF:
+        LTTC_csv_dataSTR = LTTC_csvF.read().split("\n")
         
-        #FFFBcorpus_csv_dataSTR[0] = FFFBcorpus_csv_dataSTR[0].append("freq_char_ASBC")
-        #print(FFFBcorpus_csv_dataSTR[0])
+        pprint(LTTC_csv_dataSTR)
         
-        for char_rowSTR in FFFBcorpus_csv_dataSTR[1:20]:
-            tmpCharLIST = char_rowSTR.split(",")
-            #pprint(tmpCharLIST)
-            #print(tmpCharLIST[2])  # the char in the corpus
+        #LTTC_csv_dataSTR[0] = LTTC_csv_dataSTR[0].append("freq_char_ASBC")
+        #print(LTTC_csv_dataSTR[0])
+        
+        ## Start the search of the 
+        for seg_rowSTR in LTTC_csv_dataSTR[1:20]:
+            segmentLIST = seg_rowSTR.split(",")
+            pprint(segmentLIST)
+            print(segmentLIST[3])  # the char in the file
+            
             for n_rowLIST in All_txt_LIST:
-                if tmpCharLIST[2] == n_rowLIST[0]:
-                    print("Match", tmpCharLIST[2])
+                if segmentLIST[3] == n_rowLIST[0]:
+                    print("Match", segmentLIST[3])
                     print(n_rowLIST[1]) # the freq of the char
-                    tmpCharLIST.append(n_rowLIST[1])
-                    print(tmpCharLIST)
+                    segmentLIST.append(n_rowLIST[1])
+                    print(segmentLIST)
                 else:
                     pass
-                    #print("Error: 404 not found")
+                    #print("Error: 404 not found")  # DIDN'T FIND ANYTHING ?!!!
             #FFFB_dataLIST.append(tmpLIST)
-            """
+        
         
         #pprint(FFFB_dataLIST)
         #print(len(FFFB_dataLIST))
