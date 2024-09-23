@@ -34,5 +34,6 @@ if __name__ == "__main__":
     
     # Import the text, run the parsing and then produce the syntax tree drawing
     
-    #
+    ## The current progress: Still reading every script, and figuring out what to put in this script. 
+    ## So far, most likely is the syntax_tree.py commands would be put inside this script. 
     
