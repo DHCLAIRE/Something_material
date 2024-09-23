@@ -20,5 +20,19 @@ from pathlib import Path
 #from nltk import tokenize
 from pyzhuyin import pinyin_to_zhuyin  #, zhuyin_to_pinyin
 
+## To-Do List ##
+# 1. Think how to include CKIP / Stanford Parser as one of the options
+# 2. Organize the texts into corpus (Or at least do some text preprocessing first for better efficiency on text analysis)
+# 3. Analyze the organized texts and then divided them into different levels of difficulties based on the complexity of the sentences
+# 4. ** (Ongoing) Another Project ** Combine with the materials production interface function (for psycholinguistics/neurolinguistics use corpus)
+
+
+## To-Do List FOR NOW ##
+# 1. Check the tools and look for obstacles
 
 if __name__ == "__main__":
+    
+    # Import the text, run the parsing and then produce the syntax tree drawing
+    
+    #
+    
