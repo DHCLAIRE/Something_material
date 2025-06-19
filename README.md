@@ -20,11 +20,13 @@ Phase 3. Integrate with AI tools for material generations (pseudowords, texts, s
 
 ### Format Demo
 Similarly to the format of materials of [The Open Alice EEG Dataset](https://openneuro.org/datasets/ds002322/versions/1.0.4)
+Materials:
+| Index | Item | Type | Zhuyin | Pinyin | Tone | Stroke | Homograph Cnts | Homophone Cnts | Freq Char | Freq Word | POS | NOTE |
+|-------|------|------|--------|--------|------|--------|----------------|----------------|-----------|-----------|-----|------|
+|       |      |      |        |        |      |        |                |                |           |           |     |      |
 
-| Index | Type | Zhuyin | Pinyin | Tone | Stroke | Homograph Cnts | Homophone Cnts | Freq Char | Freq Word | POS | NOTE |
-|-------|------|--------|--------|------|--------|----------------|----------------|-----------|-----------|-----|------|
-|       |      |        |        |      |        |                |                |           |           |     |      |
-
+Corpus:
+?
 
 
 
