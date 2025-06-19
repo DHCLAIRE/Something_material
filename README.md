@@ -1,5 +1,5 @@
 # Something_material
-Aim: To organize and annotate linguistic materials used in neuroscience experiments. Start with Mandarin material first.\n
+Aim: To organize and annotate linguistic materials used in neuroscience experiments. Start with Mandarin material first.  
 Input units: single character, word (character length 2+), phrase, sentence, context.
 
 
