@@ -1,5 +1,5 @@
 # Something_material
-Similarly to the materials of [The Open Alice EEG Dataset](https://openneuro.org/datasets/ds002322/versions/1.0.4)
+Similarly to the format of materials of [The Open Alice EEG Dataset](https://openneuro.org/datasets/ds002322/versions/1.0.4)
 
 Aims:
 1. Most common or needed linguistic attributes for experimental materials
