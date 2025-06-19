@@ -6,6 +6,11 @@ Aims:
 
 2. Framework of the template
 
+3. 
+
+
+| index | type | zhuyin	| pinyin | tone	| stroke | homograph_cnts | homophone_cnts | freq_char | freq_word | POS | 
+
 
 
 ## Useful python tools for conversion between zhuyin & pinyin
