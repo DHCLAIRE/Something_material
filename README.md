@@ -4,15 +4,15 @@ Input units: single character, word (character length 2+), phrase, sentence, con
 
 
 ## Progress Roadmap
-Phase 1. 
+Phase 1. Lable material input
  - List out most commonly used or needed linguistic attributes for experimental materials
  - Framework the material template, and the dataset format
+ - Allow input of all sizes
  - Get license of the corpus
  
-Phase 2. 
- - Allow input of all sizes
- - Standardize dataset (i.e. unified format for all corpora)
- - Build
+Phase 2.
+ - Standardize every dataset we're allowed to have (i.e. unified format for all corpora)
+ - Add options to let the tool to find suitable materials for users when submit the criteria request
 
 Phase 3. Integrate with AI tools for material generations (pseudowords, texts, sentences, writing style rewrite)
  - TBC (Hopefully)
