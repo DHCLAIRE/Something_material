@@ -8,8 +8,12 @@ Aims:
 
 3. 
 
+### Format Demo
 
-| index | type | zhuyin	| pinyin | tone	| stroke | homograph_cnts | homophone_cnts | freq_char | freq_word | POS | 
+| Index | Type | Zhuyin | Pinyin | Tone | Stroke | Homograph Cnts | Homophone Cnts | Freq Char | Freq Word | POS |
+|-------|------|--------|--------|------|--------|----------------|----------------|-----------|-----------|-----|
+|       |      |        |        |      |        |                |                |           |           |     |
+
 
 
 
