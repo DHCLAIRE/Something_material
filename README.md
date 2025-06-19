@@ -7,13 +7,14 @@ Input units: single character, word (character length 2+), phrase, sentence, con
 Phase 1. 
  - List out most commonly used or needed linguistic attributes for experimental materials
  - Framework the material template, and the dataset format
+ - Get license of the corpus
  
 Phase 2. 
  - Allow input of all sizes
- - Standardize dataset
+ - Standardize dataset (i.e. unified format for all corpora)
  - Build
 
-Phase 3. Integrate with AI tools for material generations (pseudowords, texts, sentences)
+Phase 3. Integrate with AI tools for material generations (pseudowords, texts, sentences, writing style rewrite)
  - TBC (Hopefully)
 
 
