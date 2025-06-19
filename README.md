@@ -4,6 +4,7 @@ Similarly to the materials of [The Open Alice EEG Dataset](https://openneuro.org
 Aims:
 1. 
 
+![Uploading 截圖 2025-06-19 上午9.21.35.png…]()
 
 
 ## Useful python tools for conversion between zhuyin & pinyin
