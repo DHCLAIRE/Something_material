@@ -10,7 +10,7 @@ Phase 1. Lable material input
  - Allow input of all sizes
  - Get license of the corpus
  
-Phase 2.
+Phase 2. Use criteria to build the desire materials you need
  - Standardize every dataset we're allowed to have (i.e. unified format for all corpora)
  - Add options to let the tool to find suitable materials for users when submit the criteria request
 
