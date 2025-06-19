@@ -1,10 +1,8 @@
-# Textgrid2TRF_Interface
+# Something_material
+Similarly to the materials of Open Alice EEG dataset [https://openneuro.org/datasets/ds002322/versions/1.0.4]
 
-'''
-To create TRF predictor form from Textgrid
-'''
-1. Make CKIP to Articut
-2. Extract Textgrid info into wanted csv form
+Aims:
+1. 
 
 
 
